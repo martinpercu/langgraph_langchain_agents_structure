@@ -2,7 +2,8 @@
     "dependencies": ["."],
     "graphs": {
         "agent": "./src/agents/main.py:agent",
-        "simple": "./src/agents/simple.py:agent"
+        "simple": "./src/agents/simple.py:agent",
+        "simple-message": "./src/agents/simple-message.py:agent"
     },
     "env": ".env"
 }

@@ -68,3 +68,11 @@ include = ["*"]
 ```
 
 
+## Simple Graph
+- In notebooks the 02-simple shows a linear connextion with one node
+- The agent "simple" is the same
+
+
+## Messages
+- In notebooks 03-messages shows how to concatenate messages. Human and AI messages
+- Tha agent "simple-message" just add the "state" using MessagesState
