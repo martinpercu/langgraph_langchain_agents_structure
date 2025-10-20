@@ -75,8 +75,9 @@ include = ["*"]
 
 ## Messages
 - In notebooks 03-messages shows how to concatenate messages. Human and AI messages
-- Tha agent "simple-message" just add the "state" using MessagesState
+- The agent "simple-message" just add the "state" using MessagesState
 
 ## LLM
 - In notebooks import API keys
 - Check the "from langchain.chat_models import init_chat_model". Very useful to declare any LLM doesn't matter if OpenAi Anthropic Gemini whatever. 
+- The agent "simple-llm" has the LLM integrated in the node_1.
