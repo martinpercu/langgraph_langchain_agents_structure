@@ -102,4 +102,11 @@ include = ["*"]
 - In the notebook the 2 ways to create the chain. (builder.add_node AND builder.add_sequence)
 - In the agent rag-basic-chaining.py just the implementation
 
+## Structured-message
+- In the notebook use pydantic to create a class BaseModel. (UserInfo).
+- Define the LLM with this schema as output =>
+```sh
+llm_with_structured_output  = llm.with_structured_output(schema=UserInfo)
+```
+- In the rag-basic-structured-message just implement this in the def extractor to force the LLM to extract the info and continue sending the info with the defined schema.
 
