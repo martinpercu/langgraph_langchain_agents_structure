@@ -86,3 +86,20 @@ include = ["*"]
 - Using a openAI vector store. (we need the VectorStore ID)
 - In notebook rag-basic implementing the file_search_tool using ==> bind_tools([file_search_tool]).
 - In the agent rag-basic.py is important to understand the basic rag is will not work find if we send all the "history". So we send only the last message. (of course the issues is the model lost the memory of the conversation, this is a basic RAG implementation).
+
+---
+
+# IMPORTANT
+#### 6 kind of workflows: 
+1. Prompt Chaining 
+2. Parallelization
+3. Orchestrator-Worker
+4. Evaluator-optimizer
+5. Routing
+6. Agent (usually using tools like a pdf reader)
+
+## Prompt-Chaining
+- In the notebook the 2 ways to create the chain. (builder.add_node AND builder.add_sequence)
+- In the agent rag-basic-chaining.py just the implementation
+
+
