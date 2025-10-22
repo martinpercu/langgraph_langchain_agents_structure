@@ -110,3 +110,25 @@ llm_with_structured_output  = llm.with_structured_output(schema=UserInfo)
 ```
 - In the rag-basic-structured-message just implement this in the def extractor to force the LLM to extract the info and continue sending the info with the defined schema.
 
+---
+
+# IMPORTANT-2
+- If we see the langgraph docs how to structure we will se somethin like this ==> <br>
+https://docs.langchain.com/oss/python/langgraph/application-structure#python-pyproject-toml<br><br>
+my-app/
+├── my_agent # all project code lies within here
+│   ├── utils # utilities for your graph
+│   │   ├── __init__.py
+│   │   ├── tools.py # tools for your graph
+│   │   ├── nodes.py # node functions for your graph
+│   │   └── state.py # state definition of your graph
+│   ├── __init__.py
+│   └── agent.py # code for constructing your graph
+├── .env # environment variables
+├── langgraph.json  # configuration file for LangGraph
+└── pyproject.toml # dependencies for your project
+<br>
+- This structure is ok but not great because we will need sooner a lot of nodes to control with differents tools states prompts etc etc. So in the "agents" folder I will use a new folder "support_agent" to add a folder for each node. In each node folder add whatever I need; promts tools whatever.
+
+## Refactor to support agent
+- This is just the refactoring what I have to the support support_agent.
