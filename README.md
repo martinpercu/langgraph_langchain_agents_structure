@@ -132,3 +132,23 @@ my-app/
 
 ## Refactor to support agent
 - This is just the refactoring what I have to the support support_agent.
+
+## Template Prompt Jinja
+- Install Jinja2
+```sh
+add uv Jinja2
+```
+- Using Jinja2 Template and PromptTemplate we have great control in the prompts. Check the notebook and see.
+- Just a tip for Jinja2 ==> 
+```sh
+Without name the space above and below this block will be keeped
+{% if name %} {% endif %}
+
+Sugin "-" sign 
+Without name the space above and below this block disappears
+
+{%- if name %}
+{% endif -%}
+```
+
+

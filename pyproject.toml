@@ -5,6 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "jinja2>=3.1.6",
     "langchain>=1.0.0",
     "langchain-anthropic>=1.0.0",
     "langchain-openai>=1.0.0",
