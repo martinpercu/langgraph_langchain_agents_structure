@@ -188,9 +188,25 @@ response.tool_calls
 - Also 'get_weather' means that the agent understand he should __use the tool__ "get_weather"
 
 
-
 ## React Booking
 - In the agensts I add react.py just to have the example in the last notebook.
 - Now add support_agent new folder "booking". There teh files "prompt" "tools" and "node".
 - The node is the agent itself with only one basic mission. Booking and appointment. The tools book_appointment and get_appointment_availability one use to check the availability of the appointment and the other just to book the appointment.
 - The LLM will know witch tool use for andwer the conversation.
+
+## Routing Agent Decision
+- In notebook the example to have a ==> route_edge (the "routing"). 
+- This def will return from "where go" (in this case is randomic). Go to node_2 or go to node_3.
+- To make this work we add in the build this ==> 
+```sh
+builder.add_conditional_edges('node_1', route_edge)
+```
+- Just as example check we could even start with the conditionals to continue to node 2 or 3. (see the las example in the notebook)
+- Now we will add to the support_agent the booking_node (the same we already have using ReAct). In the graph we will see this booking_node as a subgraph because itself has his own graph.
+- In the folder routes new folder "intention" here is the logic to define where continue de flow. The logic in the route.py (kind of equivalents as folder nodes.)
+- Now we will add to the support_agent the "intention_route" ==> is the DEF in the route.py.
+```sh
+builder.add_conditional_edges('extractor', intention_route)
+```
+- *I commented the llm = llm_openai.bind_tools(tools) in conversation_moment because is getting infor from a Vector storeage in Open AI we don't need.*
+- The support_agent is working !! Take the decition if use the conversation or the booking.
