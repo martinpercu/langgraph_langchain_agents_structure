@@ -186,3 +186,11 @@ response.tool_calls
 ```
 - Note the LLM __understand "capital of Italy"__ to use __"Rome"__
 - Also 'get_weather' means that the agent understand he should __use the tool__ "get_weather"
+
+
+
+## React Booking
+- In the agensts I add react.py just to have the example in the last notebook.
+- Now add support_agent new folder "booking". There teh files "prompt" "tools" and "node".
+- The node is the agent itself with only one basic mission. Booking and appointment. The tools book_appointment and get_appointment_availability one use to check the availability of the appointment and the other just to book the appointment.
+- The LLM will know witch tool use for andwer the conversation.
