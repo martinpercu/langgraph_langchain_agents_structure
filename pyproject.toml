@@ -8,6 +8,7 @@ dependencies = [
     "jinja2>=3.1.6",
     "langchain>=1.0.0",
     "langchain-anthropic>=1.0.0",
+    "langchain-google-genai>=3.0.0",
     "langchain-openai>=1.0.0",
     "langgraph>=1.0.0",
 ]
