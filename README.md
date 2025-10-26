@@ -214,3 +214,12 @@ builder.add_conditional_edges('extractor', intention_route)
 ## Parallel
 - In the notebook the example how to send the flow to 2 or 3 node in parallel way.
 - You can see in the coder_checker.py a simple agent that will send the same "code" to analize it for 2 differents nodes in parallel. Then both answer return to the "condenser_data" node and return the response.
+
+## Orchestrator
+
+- In notebook just a def wtha random choose. In real life is a node that will decide witch nodes will continue using.
+- In the agent orchestartor.py we add ==>
+```sh
+from langgraph.types import Send
+```
+- This "Send" is used in the return of the "assign_nodes" function (the same as random above). To define witch nodes will be used.
