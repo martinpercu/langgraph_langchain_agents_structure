@@ -37,6 +37,9 @@ uv run langgraph dev
 # install the project
 uv pip install -e .
 
+# install langgraph for DB postgres
+uv add langgraph-checkpoint-postgres
+
 ```
 
 #### Web site to visualise 
@@ -228,3 +231,45 @@ from langgraph.types import Send
 - First node (generator_node) create a joke BUT depending on the state has 2 differents orderto to create the joke. 
 - Second node (evaluator_node) check if the joke if funny or not using the system prompt "guidelines". And if not funny send a feedback to improve the joke.
 - The Thrid node route_edge will check if is funny or not. If funny send to END if not funny send again to the first node. Now the first node has also feedback from the first one to "make a better joke". (becareful!!) This process could be an infinite loop if the jokes never is good enought for the 2nd node.
+
+## FastAPi Docker Postgress
+- Install ==> langgraph-checkpoint-postgres
+```sh
+uv add langgraph-checkpoint-postgres
+```
+- In main.py a fastapi basic.
+- In main-2.py fastapi with DB and more
+- add a Docker to see the postgre DB
+---
+### IMPORTANT
+- __In support_agent the agent must be create in a dynamic way.__
+- In support_agent.py compile the agent inside a function ==> 
+```sh
+def make_the_agent(config: TypedDict):
+    checkpointer = config.get("checkpointer", None)
+    builder = StateGraph(State)
+    builder.add_node("extractor", extractor)
+    builder.add_node("conversation_moment", conversation_moment)
+    builder.add_node("booking_node", booking_node)
+
+    builder.add_edge(START, 'extractor')
+    builder.add_conditional_edges('extractor', intention_route)
+    # builder.add_edge('extractor', 'conversation_moment')
+    builder.add_edge('conversation_moment', END)
+
+    agent = builder.compile(checkpointer=checkpointer)
+    
+    return agent
+```
+- No in the langgraph.json just chancg ":agent" for ":make_the_agent" (the new funtion)
+- Now in /api a new db.py file to connect DB. 
+- Here with the @asynccontextmanager def lifestan() says before connect to a DB (FUNDAMENTAL and IMPORTANT)
+- The get_checkpointer return the instance of checkpointier if exist. (Otherwise send error).
+- All in a dependency "CheckpointerDep" of fastAPI.
+- In main-2.py with 
+```sh
+from api.db import lifespan, CheckpointerDep
+
+app = FastAPI(lifespan=lifespan)
+``` 
+- The @app.post("/chat/{chat_id}") now has a dependency (the checkpointer:CheckpointerDep)

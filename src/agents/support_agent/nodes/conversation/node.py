@@ -15,7 +15,7 @@ def conversation_moment(state: State):
     new_state: State = {}
     history = state["messages"]
     last_message = history[-1]
-    customer_name = state.get("customer_name", 'Johny Dollie')
+    # customer_name = state.get("customer_name", 'Johny Dollie')
     ai_message = llm_openai.invoke([("system", SYSTEM_PROMPT), ("user", last_message.text)])
     new_state["messages"] = [ai_message]
     return new_state

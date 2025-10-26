@@ -1,0 +1,24 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: my_course_agent_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: agent_test
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-scripts:/docker-entrypoint-initdb.d
+    networks:
+      - my_course_agent_network
+
+volumes:
+  postgres_data:
+  pgadmin_data:
+
+networks:
+  my_course_agent_network:
+    driver: bridge
