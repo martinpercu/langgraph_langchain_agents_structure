@@ -4,7 +4,9 @@
         "agent": "./src/agents/main.py:agent",
         "simple": "./src/agents/simple.py:agent",
         "simple-message": "./src/agents/simple-message.py:agent",
-        "simple-llm": "./src/agents/simple-llm.py:agent"
+        "simple-llm": "./src/agents/simple-llm.py:agent",
+        "rag-basic": "./src/agents/rag-basic.py:agent",
+        "rag-basic-chaining": "./src/agents/rag-basic-chaining.py:agent"
     },
     "env": ".env"
 }
