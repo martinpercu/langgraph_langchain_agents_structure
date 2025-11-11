@@ -6,7 +6,8 @@
         "simple-message": "./src/agents/simple-message.py:agent",
         "simple-llm": "./src/agents/simple-llm.py:agent",
         "rag-basic": "./src/agents/rag-basic.py:agent",
-        "rag-basic-chaining": "./src/agents/rag-basic-chaining.py:agent"
+        "rag-basic-chaining": "./src/agents/rag-basic-chaining.py:agent",
+        "rag-basic-structured-message": "./src/agents/rag-basic-structured-message.py:agent"
     },
     "env": ".env"
 }
