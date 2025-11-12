@@ -17,7 +17,9 @@ uv venv
 uv add langgraph langchain langchain-openai
 uv add "langgraph-cli" --dev
 uv add langchain-anthropic
+uv add langchain-google-genai
 uv add "fastapi[standard]"
+
 
 # add dev dependencies
 uv add "langgraph-cli[inmem]" --dev
@@ -152,3 +154,35 @@ Without name the space above and below this block disappears
 ```
 
 
+## Tools with Re-Act (fromlangchain)
+- In the notebook we start with the basic agent function. The LLM will chose witch tool will use. 
+- This is the Reason Action (ReAct) concept. Is an LLM (better with raisoning, like Gemini-Pro) use to define witch tool should use.
+- To define a tool ==>
+```sh
+from langchain_core.tools import tool
+@tool("get_weather", description="Get the weather of a city")
+def get_weather(city: str):
+    response = requests.get(f"https://geocoding-api.open-meteo.com/v1/search?name={city}&count=1")
+    data = response.json()
+    latitude = data["results"][0]["latitude"]
+    longitude = data["results"][0]["longitude"]
+    response = requests.get(f"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&current_weather=true")
+    data = response.json()
+    response = f"The weather in {city} is {data["current_weather"]["temperature"]}C with {data["current_weather"]["windspeed"]}km/h of wind."
+    return response
+```
+- With this ==>
+```sh
+llm_with_tools = llm.bind_tools([get_products, get_weather])
+response = llm_with_tools.invoke(messages)
+response.tool_calls
+```
+- We get ==>
+```sh
+[{'name': 'get_weather',
+  'args': {'city': 'Rome'},
+  'id': 'e99892ea-b023-4c08-b32e-2390c111767e',
+  'type': 'tool_call'}]
+```
+- Note the LLM __understand "capital of Italy"__ to use __"Rome"__
+- Also 'get_weather' means that the agent understand he should __use the tool__ "get_weather"
