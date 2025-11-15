@@ -10,7 +10,8 @@
         "rag-basic-structured-message": "./src/agents/rag-basic-structured-message.py:agent",
         "support-agent": "./src/agents/support_agent/support_agent.py:agent",
         "weather-and-sales-agent": "./src/agents/react.py:react_test_agent",
-        "booking-test-agent": "./src/agents/support_agent/nodes/booking/node.py:booking_node"
+        "booking-test-agent": "./src/agents/support_agent/nodes/booking/node.py:booking_node",
+        "code-viewer": "./src/agents/coder_checker.py:agent"
     },
     "env": ".env"
 }

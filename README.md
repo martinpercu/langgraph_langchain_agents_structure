@@ -210,3 +210,7 @@ builder.add_conditional_edges('extractor', intention_route)
 ```
 - *I commented the llm = llm_openai.bind_tools(tools) in conversation_moment because is getting infor from a Vector storeage in Open AI we don't need.*
 - The support_agent is working !! Take the decition if use the conversation or the booking.
+
+## Parallel
+- In the notebook the example how to send the flow to 2 or 3 node in parallel way.
+- You can see in the coder_checker.py a simple agent that will send the same "code" to analize it for 2 differents nodes in parallel. Then both answer return to the "condenser_data" node and return the response.
