@@ -12,7 +12,8 @@
         "weather-and-sales-agent": "./src/agents/react.py:react_test_agent",
         "booking-test-agent": "./src/agents/support_agent/nodes/booking/node.py:booking_node",
         "code-viewer": "./src/agents/coder_checker.py:agent",
-        "orchestrator": "./src/agents/orchestrator.py:agent"
+        "orchestrator": "./src/agents/orchestrator.py:agent",
+        "joker-creator": "./src/agents/evaluator_optimizer_joke.py:agent"
     },
     "env": ".env"
 }

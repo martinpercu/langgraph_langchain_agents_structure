@@ -216,10 +216,15 @@ builder.add_conditional_edges('extractor', intention_route)
 - You can see in the coder_checker.py a simple agent that will send the same "code" to analize it for 2 differents nodes in parallel. Then both answer return to the "condenser_data" node and return the response.
 
 ## Orchestrator
-
 - In notebook just a def wtha random choose. In real life is a node that will decide witch nodes will continue using.
 - In the agent orchestartor.py we add ==>
 ```sh
 from langgraph.types import Send
 ```
 - This "Send" is used in the return of the "assign_nodes" function (the same as random above). To define witch nodes will be used.
+
+## Evaluator Optimizer
+- In the evaluator_optimizer_joke.py the flow is easy but VERY interesting. 
+- First node (generator_node) create a joke BUT depending on the state has 2 differents orderto to create the joke. 
+- Second node (evaluator_node) check if the joke if funny or not using the system prompt "guidelines". And if not funny send a feedback to improve the joke.
+- The Thrid node route_edge will check if is funny or not. If funny send to END if not funny send again to the first node. Now the first node has also feedback from the first one to "make a better joke". (becareful!!) This process could be an infinite loop if the jokes never is good enought for the 2nd node.
