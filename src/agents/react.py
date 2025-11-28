@@ -34,7 +34,7 @@ Your tools are:
 """
 
 react_test_agent = create_agent(
-    model="anthropic:claude-opus-4-1-20250805",
+    model="claude-haiku-4-5-20251001",
     tools=tools,
     system_prompt=system_prompt,
 )
