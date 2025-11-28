@@ -1,6 +1,26 @@
 ## Create a new project
 
 
+### This will be the final structure to manage agents.
+curso_langchain_agent/
+├── src/                                    # main project code
+│   ├── agents/                            # agents and workflows
+│   │   └── support_agent/                 # customer support agent
+│   │       ├── nodes/                     # graph node functions
+│   │       ├── routes/                    # routing logic
+│   │       ├── state.py                   
+│   │       └── support_agent.py           
+│   └── api/                               # FastAPI backend
+├── notebooks/                             # Jupyter notebooks for examples
+├── init-scripts/                          # database initialization scripts
+├── .env                                   # environment variables
+├── langgraph.json                         # LangGraph configuration
+├── docker-compose.yml                     # Docker configuration
+├── pyproject.toml                         # project dependencies
+└── README.md                              # documentation
+
+
+
 ### Env with UV
 
 ```sh
