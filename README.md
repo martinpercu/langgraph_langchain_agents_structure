@@ -2,6 +2,7 @@
 
 
 ### This will be the final structure to manage agents.
+```sh
 curso_langchain_agent/
 ├── src/                                    # main project code
 │   ├── agents/                            # agents and workflows
@@ -18,7 +19,7 @@ curso_langchain_agent/
 ├── docker-compose.yml                     # Docker configuration
 ├── pyproject.toml                         # project dependencies
 └── README.md                              # documentation
-
+```
 
 
 ### Env with UV
