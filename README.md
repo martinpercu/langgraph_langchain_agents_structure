@@ -1,10 +1,38 @@
-## Create a new project
+## 🤖 Agents Structure with Langgraph & LangChain: Advanced Workflows
+
+This repository provides a comprehensive, structured project template for building complex AI agents using **LangGraph** and **LangChain**.
+
+The primary focus is on establishing a robust project structure (`src/agents/support_agent`) and implementing six core types of multi-step agent workflows.
+
+### 🎯 Key Features & Workflows
+
+| Workflow Type | Description |
+| :--- | :--- |
+| **Basic Agent** | Shows simple linear graphs, message concatenation, and LLM integration (02-03-LLM). |
+| **RAG Implementation** | Demonstrates basic RAG using OpenAI vector stores and `bind_tools` (Rag basic). |
+| **Prompt Chaining** | Connects nodes sequentially using `builder.add_sequence` (Prompt-Chaining). |
+| **Structured Output** | Enforces Pydantic schemas for structured LLM output using `llm.with_structured_output` (Structured-message). |
+| **ReAct & Tool Use** | Implements the **Reasoning and Acting (ReAct)** pattern, where the LLM decides which external tool to call (e.g., `get_weather`, `book_appointment`). |
+| **Conditional Routing** | An agent makes decisions on where to go next (e.g., `conversation` vs. `booking`) using `builder.add_conditional_edges` (Routing Agent Decision). |
+| **Parallelization** | Executes two or more nodes simultaneously and condenses the results (Parallel). |
+| **Orchestrator-Worker** | A dedicated node decides which worker nodes to activate using the `Send` mechanism (Orchestrator). |
+| **Evaluator-Optimizer** | Implements a feedback loop: an `evaluator_node` judges output and sends feedback back to the `generator_node` for refinement (Evaluator Optimizer). |
+
+### 🛠️ Structure and Infrastructure
+
+* **Structure:** Follows a modular architecture where each agent (e.g., `support_agent`) has dedicated folders for `nodes/`, `routes/`, and `state.py`.
+* **Prompting:** Uses **Jinja2** for templating to gain fine-grained control over prompt generation.
+* **FastAPI & Database:** Includes a **FastAPI** backend integrated with **PostgreSQL** checkpoints using `langgraph-checkpoint-postgres` for persistent conversation history and dynamic agent creation. 
+
+This repository serves as a guide for engineering scalable, production-ready AI agent systems.
+
 
 
 ### This will be the final structure to manage agents.
+
 ```sh
 curso_langchain_agent/
-├── src/                                    # main project code
+├── src/                                   # main project code
 │   ├── agents/                            # agents and workflows
 │   │   └── support_agent/                 # customer support agent
 │   │       ├── nodes/                     # graph node functions
