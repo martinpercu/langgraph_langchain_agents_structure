@@ -1,3 +1,82 @@
+# Langchain-Langgraph_Agents-Structure
+
+Production-ready project template for building complex, stateful AI agents using **LangGraph** and **LangChain**. Features modular architecture, multiple workflow patterns, and persistent conversation history.
+
+## 🎯 What's Inside
+
+This repository demonstrates professional AI agent development with:
+- **6 Core Workflow Patterns**: RAG, ReAct, Routing, Parallelization, Orchestrator-Worker, Evaluator-Optimizer
+- **Modular Structure**: Organized `nodes/`, `routes/`, and `state.py` for scalability
+- **Production Features**: FastAPI backend, PostgreSQL checkpoints, Docker support
+- **Advanced Prompting**: Jinja2 templates for fine-grained prompt control
+
+## 🤖 Implemented Workflows
+
+| Workflow | Description | Use Case |
+|----------|-------------|----------|
+| **Basic Agent** | Linear graph with LLM integration | Simple chatbots |
+| **RAG** | Retrieval-Augmented Generation with vector stores | Knowledge-based assistants |
+| **ReAct & Tools** | Reasoning and Acting pattern with external tools | Multi-capability agents |
+| **Conditional Routing** | Dynamic decision-making between paths | Intent-based routing |
+| **Parallelization** | Execute multiple nodes simultaneously | Concurrent processing |
+| **Orchestrator-Worker** | Coordinator node distributes work | Complex multi-step tasks |
+| **Evaluator-Optimizer** | Feedback loop for iterative improvement | Quality refinement |
+
+## 🛠️ Tech Stack
+- **AI Framework:** LangGraph, LangChain
+- **LLMs:** OpenAI, Anthropic Claude, Google Gemini
+- **Backend:** FastAPI with async support
+- **Database:** PostgreSQL with `langgraph-checkpoint-postgres`
+- **Templating:** Jinja2
+- **Package Manager:** uv
+- **Containerization:** Docker Compose
+
+## 🚀 Quick Start
+```bash
+# Install uv package manager
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Setup environment
+uv venv
+uv sync
+
+# Run development server
+uv run langgraph dev
+
+# Or run FastAPI backend
+uv run uvicorn api.main:app --reload
+```
+
+## 📁 Project Structure
+```
+src/
+├── agents/
+│   └── support_agent/          # Example: customer support agent
+│       ├── nodes/              # Graph node functions
+│       ├── routes/             # Routing logic
+│       ├── state.py            # State definition
+│       └── support_agent.py    # Agent construction
+└── api/                        # FastAPI backend
+```
+
+## 📚 Learning Path
+
+1. **Start Simple**: Explore `02-simple` and `03-messages` notebooks
+2. **Add Intelligence**: Progress to `LLM` and `rag-basic`
+3. **Build Workflows**: Study the 6 workflow patterns
+4. **Scale Up**: Implement the modular `support_agent` structure
+5. **Deploy**: Use FastAPI + PostgreSQL for production
+
+## 🎓 Key Concepts
+
+- **State Management**: MessagesState and custom state schemas
+- **Tool Binding**: ReAct pattern for dynamic tool selection
+- **Conditional Edges**: Route agents based on LLM decisions
+- **Checkpointing**: Persistent conversation history with PostgreSQL
+- **Structured Output**: Pydantic schemas for reliable LLM responses
+
+---
+
 ## 🤖 Agents Structure with Langgraph & LangChain: Advanced Workflows
 
 This repository provides a comprehensive, structured project template for building complex AI agents using **LangGraph** and **LangChain**.
